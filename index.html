@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +40,7 @@ font-size:22px;
 width:400px;
 height:600px;
 margin:auto;
-background:url("https://i.imgur.com/3e5p9.jpg");
+background:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70");
 background-size:cover;
 position:relative;
 overflow:hidden;
@@ -98,7 +97,7 @@ margin:5px;
 <div id="score">Score: 0</div>
 
 <div id="gameArea">
-<img id="player" src="https://i.imgur.com/8Q1Z1Zm.png">
+<img id="player" src="https://cdn-icons-png.flaticon.com/512/744/744465.png">
 </div>
 
 <div id="mobileControls">
@@ -215,8 +214,8 @@ function createEnemy(){
 let enemy=document.createElement("img");
 
 let cars=[
-"https://i.imgur.com/8Q1Z1Zm.png",
-"https://i.imgur.com/9Rj9K.png"
+"https://cdn-icons-png.flaticon.com/512/743/743007.png",
+"https://cdn-icons-png.flaticon.com/512/744/744465.png"
 ];
 
 enemy.src=cars[Math.floor(Math.random()*cars.length)];
@@ -248,11 +247,8 @@ let enemyRect=enemy.getBoundingClientRect();
 if(
 
 playerRect.left<enemyRect.right &&
-
 playerRect.right>enemyRect.left &&
-
 playerRect.top<enemyRect.bottom &&
-
 playerRect.bottom>enemyRect.top
 
 ){
@@ -303,4 +299,3 @@ requestAnimationFrame(gameLoop);
 
 </body>
 </html>
-```
