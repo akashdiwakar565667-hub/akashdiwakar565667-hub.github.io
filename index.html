@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ultimate Anime Hub</title>
+<title>Akash Anime Hub</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -24,55 +24,119 @@ background:#0a0a0f;
 color:white;
 }
 
-/* HEADER */
+/* LOGIN PAGE */
 
-header{
+#loginPage{
+
 display:flex;
-justify-content:space-between;
+
 align-items:center;
-padding:20px 40px;
-background:#111;
-border-bottom:1px solid #222;
+
+justify-content:center;
+
+height:100vh;
+
+flex-direction:column;
+
 }
 
-.logo{
-font-size:26px;
-font-weight:600;
+.login-box{
+
+background:#14141c;
+
+padding:40px;
+
+border-radius:12px;
+
+width:300px;
+
+text-align:center;
+
+}
+
+input{
+
+width:100%;
+
+padding:10px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:8px;
+
+}
+
+button{
+
+width:100%;
+
+padding:10px;
+
+border:none;
+
+background:#ff2e63;
+
+color:white;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+a{
+
 color:#ff2e63;
+
+cursor:pointer;
+
+font-size:14px;
+
+}
+
+/* SITE */
+
+#site{
+
+display:none;
+
+}
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px 40px;
+
+background:#111;
+
 }
 
 .search{
-width:260px;
-padding:10px;
-border-radius:20px;
-border:none;
-outline:none;
-}
 
-/* HERO */
+padding:10px;
+
+border-radius:20px;
+
+border:none;
+
+}
 
 .hero{
-height:350px;
-display:flex;
-align-items:center;
-justify-content:center;
+
+padding:70px;
+
 text-align:center;
-font-size:34px;
-font-weight:600;
+
 background:linear-gradient(90deg,#ff2e63,#ff7b00);
+
 }
-
-/* SECTION */
-
-.section{
-padding:40px;
-}
-
-.section h2{
-margin-bottom:20px;
-}
-
-/* GRID */
 
 .grid{
 
@@ -81,6 +145,8 @@ display:grid;
 grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
 
 gap:20px;
+
+padding:40px;
 
 }
 
@@ -92,17 +158,7 @@ border-radius:12px;
 
 overflow:hidden;
 
-transition:.3s;
-
 cursor:pointer;
-
-}
-
-.card:hover{
-
-transform:scale(1.07);
-
-box-shadow:0 0 25px rgba(0,0,0,.8);
 
 }
 
@@ -124,162 +180,159 @@ text-align:center;
 
 }
 
-.title{
-
-font-size:14px;
-
-font-weight:500;
-
-}
-
-.watch{
-
-margin-top:8px;
-
-background:#ff2e63;
-
-border:none;
-
-padding:6px 12px;
-
-border-radius:8px;
-
-color:white;
-
-cursor:pointer;
-
-font-size:12px;
-
-}
-
-footer{
-
-text-align:center;
-
-padding:30px;
-
-color:#777;
-
-}
-
 </style>
+
 </head>
 
 <body>
 
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+<div class="login-box">
+
+<h2>Login</h2>
+
+<input id="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p style="margin-top:10px;">No account? <a onclick="signup()">Signup</a></p>
+
+</div>
+
+</div>
+
+<!-- SITE -->
+
+<div id="site">
+
 <header>
 
-<div class="logo">🔥 Anime Hub</div>
+<h2>🔥 Akash Anime Hub</h2>
 
-<input type="text" placeholder="Search anime..." class="search" id="search">
+<input class="search" placeholder="Search..." id="search">
 
 </header>
 
 <div class="hero">
 
-Watch Anime Free Instantly
+<h1>Hey everyone I'm Akash</h1>
+
+<p>and I'm here for you for free everything</p>
 
 </div>
 
-<div class="section">
-
-<h2>🔥 Trending Anime</h2>
-
-<div class="grid" id="trending"></div>
+<div class="grid" id="grid"></div>
 
 </div>
-
-<div class="section">
-
-<h2>⭐ Top Rated Anime</h2>
-
-<div class="grid" id="top"></div>
-
-</div>
-
-<footer>
-
-Anime Hub • Watch via watchanimeworld.net
-
-</footer>
 
 <script>
 
-/* Redirect link */
+/* LOGIN */
 
-function redirect(name){
+function signup(){
 
-const url=`https://watchanimeworld.net/?s=${encodeURIComponent(name)}`;
+let email=document.getElementById("email").value;
 
-window.open(url,"_blank");
+let pass=document.getElementById("password").value;
+
+localStorage.setItem("userEmail",email);
+
+localStorage.setItem("userPass",pass);
+
+alert("Signup successful");
 
 }
 
-/* Create card */
+function login(){
 
-function createCard(container,anime){
+let email=document.getElementById("email").value;
 
-const card=document.createElement("div");
+let pass=document.getElementById("password").value;
+
+if(
+
+email===localStorage.getItem("userEmail") &&
+
+pass===localStorage.getItem("userPass")
+
+){
+
+document.getElementById("loginPage").style.display="none";
+
+document.getElementById("site").style.display="block";
+
+loadAnime();
+
+}else{
+
+alert("Wrong login");
+
+}
+
+}
+
+/* ANIME */
+
+function loadAnime(){
+
+fetch("https://api.jikan.moe/v4/top/anime")
+
+.then(r=>r.json())
+
+.then(d=>{
+
+const grid=document.getElementById("grid");
+
+d.data.forEach(a=>{
+
+let card=document.createElement("div");
 
 card.className="card";
 
 card.innerHTML=`
 
-<img src="${anime.images.jpg.large_image_url}">
+<img src="${a.images.jpg.large_image_url}">
 
 <div class="info">
 
-<div class="title">${anime.title}</div>
-
-<button class="watch">Watch</button>
+${a.title}
 
 </div>
 
 `;
 
-card.onclick=()=>redirect(anime.title);
+card.onclick=()=>{
 
-container.appendChild(card);
+window.open(`https://watchanimeworld.net/?s=${encodeURIComponent(a.title)}`,"_blank");
+
+};
+
+grid.appendChild(card);
+
+});
+
+});
 
 }
 
-/* Trending */
-
-fetch("https://api.jikan.moe/v4/seasons/now")
-
-.then(res=>res.json())
-
-.then(data=>{
-
-const container=document.getElementById("trending");
-
-data.data.slice(0,24).forEach(a=>createCard(container,a));
-
-});
-
-/* Top Rated */
-
-fetch("https://api.jikan.moe/v4/top/anime")
-
-.then(res=>res.json())
-
-.then(data=>{
-
-const container=document.getElementById("top");
-
-data.data.slice(0,24).forEach(a=>createCard(container,a));
-
-});
-
-/* Search */
+/* SEARCH */
 
 document.getElementById("search").addEventListener("keyup",function(){
 
-let val=this.value.toLowerCase();
+let q=this.value.toLowerCase();
 
 document.querySelectorAll(".card").forEach(card=>{
 
-card.style.display=card.innerText.toLowerCase().includes(val)?"block":"none";
+card.style.display=
+
+card.innerText.toLowerCase().includes(q)
+
+?"block":"none";
 
 });
 
