@@ -24,160 +24,92 @@ background:#0a0a0f;
 color:white;
 }
 
-/* LOGIN PAGE */
-
-#loginPage{
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-height:100vh;
-
-flex-direction:column;
-
-}
-
-.login-box{
-
-background:#14141c;
-
-padding:40px;
-
-border-radius:12px;
-
-width:300px;
-
-text-align:center;
-
-}
-
-input{
-
-width:100%;
-
-padding:10px;
-
-margin:10px 0;
-
-border:none;
-
-border-radius:8px;
-
-}
-
-button{
-
-width:100%;
-
-padding:10px;
-
-border:none;
-
-background:#ff2e63;
-
-color:white;
-
-border-radius:8px;
-
-cursor:pointer;
-
-}
-
-a{
-
-color:#ff2e63;
-
-cursor:pointer;
-
-font-size:14px;
-
-}
-
-/* SITE */
-
-#site{
-
-display:none;
-
-}
+/* HEADER */
 
 header{
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
 padding:20px 40px;
-
 background:#111;
+border-bottom:1px solid #222;
+}
 
+.logo{
+font-size:22px;
+font-weight:600;
+color:#ff2e63;
 }
 
 .search{
-
 padding:10px;
-
 border-radius:20px;
-
 border:none;
-
+width:250px;
 }
 
-.hero{
+/* MESSAGE */
 
-padding:70px;
-
+.topmsg{
 text-align:center;
-
-background:linear-gradient(90deg,#ff2e63,#ff7b00);
-
+padding:12px;
+background:#14141c;
+font-size:14px;
+color:#aaa;
 }
+
+/* ABOUT */
+
+.about{
+padding:50px 20px;
+text-align:center;
+max-width:800px;
+margin:auto;
+line-height:1.7;
+}
+
+.about h2{
+margin-bottom:10px;
+}
+
+/* GRID */
 
 .grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-
 gap:20px;
-
 padding:40px;
-
 }
 
 .card{
-
 background:#14141c;
-
 border-radius:12px;
-
 overflow:hidden;
-
 cursor:pointer;
+transition:.3s;
+}
 
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(0,0,0,.8);
 }
 
 .card img{
-
 width:100%;
-
 height:250px;
-
 object-fit:cover;
-
 }
 
-.info{
-
+.title{
 padding:10px;
-
 text-align:center;
+font-size:14px;
+}
 
+footer{
+text-align:center;
+padding:30px;
+color:#777;
 }
 
 </style>
@@ -186,141 +118,96 @@ text-align:center;
 
 <body>
 
-<!-- LOGIN PAGE -->
-
-<div id="loginPage">
-
-<div class="login-box">
-
-<h2>Login</h2>
-
-<input id="email" placeholder="Email">
-
-<input id="password" type="password" placeholder="Password">
-
-<button onclick="login()">Login</button>
-
-<p style="margin-top:10px;">No account? <a onclick="signup()">Signup</a></p>
-
-</div>
-
-</div>
-
-<!-- SITE -->
-
-<div id="site">
-
 <header>
 
-<h2>🔥 Akash Anime Hub</h2>
+<div class="logo">🔥 Akash Anime Hub</div>
 
-<input class="search" placeholder="Search..." id="search">
+<input class="search" placeholder="Search anime..." id="search">
 
 </header>
 
-<div class="hero">
+<div class="topmsg">
+Hey everyone I'm Akash — free anime for everyone.
+</div>
 
-<h1>Hey everyone I'm Akash</h1>
+<div class="about">
 
-<p>and I'm here for you for free everything</p>
+<h2>About This Site</h2>
+
+<p>
+
+Welcome to Akash Anime Hub.  
+This website helps you quickly discover hundreds of anime in one place.
+
+All anime shown here redirect you to a streaming source where you can watch them easily.
+
+My goal is to make anime discovery simple, fast, and free for everyone who loves anime.
+
+Enjoy exploring and watching your favourite shows.
+
+</p>
 
 </div>
 
-<div class="grid" id="grid"></div>
+<div class="grid" id="animeGrid"></div>
 
-</div>
+<footer>
+
+Created by Akash • Anime redirect via watchanimeworld.net
+
+</footer>
 
 <script>
 
-/* LOGIN */
+/* redirect */
 
-function signup(){
+function watch(title){
 
-let email=document.getElementById("email").value;
-
-let pass=document.getElementById("password").value;
-
-localStorage.setItem("userEmail",email);
-
-localStorage.setItem("userPass",pass);
-
-alert("Signup successful");
+window.open(`https://watchanimeworld.net/?s=${encodeURIComponent(title)}`,"_blank");
 
 }
 
-function login(){
+/* create card */
 
-let email=document.getElementById("email").value;
+function card(container,anime){
 
-let pass=document.getElementById("password").value;
+let c=document.createElement("div");
 
-if(
+c.className="card";
 
-email===localStorage.getItem("userEmail") &&
+c.innerHTML=`
 
-pass===localStorage.getItem("userPass")
+<img src="${anime.images.jpg.large_image_url}">
 
-){
+<div class="title">${anime.title}</div>
 
-document.getElementById("loginPage").style.display="none";
+`;
 
-document.getElementById("site").style.display="block";
+c.onclick=()=>watch(anime.title);
 
-loadAnime();
-
-}else{
-
-alert("Wrong login");
+container.appendChild(c);
 
 }
 
-}
+/* load 100+ anime */
 
-/* ANIME */
+const grid=document.getElementById("animeGrid");
 
-function loadAnime(){
+for(let page=1;page<=5;page++){
 
-fetch("https://api.jikan.moe/v4/top/anime")
+fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
 
 .then(r=>r.json())
 
 .then(d=>{
 
-const grid=document.getElementById("grid");
-
-d.data.forEach(a=>{
-
-let card=document.createElement("div");
-
-card.className="card";
-
-card.innerHTML=`
-
-<img src="${a.images.jpg.large_image_url}">
-
-<div class="info">
-
-${a.title}
-
-</div>
-
-`;
-
-card.onclick=()=>{
-
-window.open(`https://watchanimeworld.net/?s=${encodeURIComponent(a.title)}`,"_blank");
-
-};
-
-grid.appendChild(card);
-
-});
+d.data.forEach(a=>card(grid,a));
 
 });
 
 }
 
-/* SEARCH */
+/* search */
 
 document.getElementById("search").addEventListener("keyup",function(){
 
