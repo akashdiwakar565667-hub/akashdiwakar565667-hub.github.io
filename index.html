@@ -45,24 +45,19 @@ cursor:pointer;
 margin-left:8px;
 }
 
-h2{
-padding-left:20px;
-}
-
 .container{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-gap:18px;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:20px;
 padding:20px;
 }
 
 .card{
 background:#1a1a1a;
 border-radius:8px;
+overflow:hidden;
 cursor:pointer;
 transition:0.3s;
-text-align:center;
-overflow:hidden;
 }
 
 .card:hover{
@@ -71,13 +66,14 @@ transform:scale(1.07);
 
 .card img{
 width:100%;
-height:230px;
+height:250px;
 object-fit:cover;
 }
 
 .card h3{
 padding:10px;
 font-size:15px;
+text-align:center;
 }
 
 footer{
@@ -88,7 +84,6 @@ margin-top:40px;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -102,7 +97,7 @@ margin-top:40px;
 
 </div>
 
-<h2>Top Anime</h2>
+<h2 style="padding-left:20px;">Top Anime</h2>
 
 <div class="container" id="anime"></div>
 
@@ -117,53 +112,48 @@ window.location.href="https://watchanimeworld.net/?s="+encodeURIComponent(q)
 }
 }
 
-document.getElementById("searchInput").addEventListener("keypress",function(e){
-if(e.key==="Enter"){
-searchAnime()
-}
-})
-
 const animeList=[
 
-"Naruto","Naruto Shippuden","One Piece","Attack on Titan","Demon Slayer",
-"Jujutsu Kaisen","Death Note","Dragon Ball","Dragon Ball Z","Dragon Ball Super",
-"Fullmetal Alchemist Brotherhood","Tokyo Ghoul","Hunter x Hunter",
-"Black Clover","Bleach","Chainsaw Man","My Hero Academia","Spy x Family",
-"Vinland Saga","Solo Leveling","Blue Lock","Haikyuu","Steins Gate",
-"Code Geass","Mob Psycho 100","One Punch Man","Re Zero","Fairy Tail",
-"Sword Art Online","Dr Stone","Akame ga Kill","Gintama","Boruto",
-"Tokyo Revengers","Fire Force","No Game No Life","Overlord","Parasyte",
-"Assassination Classroom","Great Teacher Onizuka","JoJo Bizarre Adventure",
-"Cowboy Bebop","Neon Genesis Evangelion","Psycho Pass","Bungo Stray Dogs",
-"Made in Abyss","Kuroko no Basket","Food Wars","Seven Deadly Sins"
+{name:"Naruto",img:"https://cdn.myanimelist.net/images/anime/13/17405.jpg"},
+{name:"Attack on Titan",img:"https://cdn.myanimelist.net/images/anime/10/47347.jpg"},
+{name:"Demon Slayer",img:"https://cdn.myanimelist.net/images/anime/1286/99889.jpg"},
+{name:"Jujutsu Kaisen",img:"https://cdn.myanimelist.net/images/anime/1171/109222.jpg"},
+{name:"Dragon Ball Super",img:"https://cdn.myanimelist.net/images/anime/7/74606.jpg"},
+{name:"Hunter x Hunter",img:"https://cdn.myanimelist.net/images/anime/1337/99013.jpg"},
+{name:"Tokyo Ghoul",img:"https://cdn.myanimelist.net/images/anime/5/64449.jpg"},
+{name:"Bleach",img:"https://cdn.myanimelist.net/images/anime/3/40451.jpg"},
+{name:"One Piece",img:"https://cdn.myanimelist.net/images/anime/6/73245.jpg"},
+{name:"Death Note",img:"https://cdn.myanimelist.net/images/anime/9/9453.jpg"},
+{name:"Chainsaw Man",img:"https://cdn.myanimelist.net/images/anime/1806/126216.jpg"},
+{name:"Black Clover",img:"https://cdn.myanimelist.net/images/anime/2/88336.jpg"},
+{name:"Solo Leveling",img:"https://cdn.myanimelist.net/images/anime/1803/141097.jpg"},
+{name:"Blue Lock",img:"https://cdn.myanimelist.net/images/anime/1258/126929.jpg"},
+{name:"Vinland Saga",img:"https://cdn.myanimelist.net/images/anime/1500/103005.jpg"},
+{name:"Spy x Family",img:"https://cdn.myanimelist.net/images/anime/1441/122795.jpg"},
+{name:"My Hero Academia",img:"https://cdn.myanimelist.net/images/anime/10/78745.jpg"},
+{name:"Haikyuu",img:"https://cdn.myanimelist.net/images/anime/7/76014.jpg"},
+{name:"Tokyo Revengers",img:"https://cdn.myanimelist.net/images/anime/1839/122012.jpg"},
+{name:"Fire Force",img:"https://cdn.myanimelist.net/images/anime/1465/103132.jpg"}
 
 ]
 
 const container=document.getElementById("anime")
 
-animeList.forEach(anime=>{
-
-fetch("https://api.jikan.moe/v4/anime?q="+encodeURIComponent(anime)+"&limit=1")
-.then(res=>res.json())
-.then(data=>{
-
-let img=data.data[0]?.images?.jpg?.image_url || ""
+animeList.forEach(a=>{
 
 let card=document.createElement("div")
 card.className="card"
 
 card.innerHTML=`
-<img src="${img}">
-<h3>${anime}</h3>
+<img src="${a.img}">
+<h3>${a.name}</h3>
 `
 
 card.onclick=()=>{
-window.location.href="https://watchanimeworld.net/?s="+encodeURIComponent(anime)
+window.location.href="https://watchanimeworld.net/?s="+encodeURIComponent(a.name)
 }
 
 container.appendChild(card)
-
-})
 
 })
 
