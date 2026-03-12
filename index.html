@@ -1,203 +1,292 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Hub</title>
+
+<title>Ultimate Anime Hub</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
 
 body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#0f0f14;
-color:#fff;
+background:#0a0a0f;
+color:white;
 }
+
+/* HEADER */
 
 header{
-background:linear-gradient(90deg,#ff512f,#dd2476);
-padding:20px;
-text-align:center;
-font-size:28px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#111;
+border-bottom:1px solid #222;
+}
+
+.logo{
+font-size:26px;
 font-weight:600;
+color:#ff2e63;
 }
 
-.search-bar{
-padding:20px;
-text-align:center;
-}
-
-.search-bar input{
-width:90%;
-max-width:500px;
-padding:12px 15px;
-border-radius:25px;
+.search{
+width:260px;
+padding:10px;
+border-radius:20px;
 border:none;
 outline:none;
-font-size:16px;
 }
 
-.section{padding:20px;}
+/* HERO */
+
+.hero{
+height:350px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:34px;
+font-weight:600;
+background:linear-gradient(90deg,#ff2e63,#ff7b00);
+}
+
+/* SECTION */
+
+.section{
+padding:40px;
+}
 
 .section h2{
-margin:0 0 15px 10px;
+margin-bottom:20px;
 }
 
+/* GRID */
+
 .grid{
+
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-gap:15px;
+
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+
+gap:20px;
+
 }
 
 .card{
-background:#1b1b25;
+
+background:#14141c;
+
 border-radius:12px;
+
 overflow:hidden;
+
+transition:.3s;
+
 cursor:pointer;
-transition:0.2s;
+
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 20px rgba(0,0,0,.4);
+
+transform:scale(1.07);
+
+box-shadow:0 0 25px rgba(0,0,0,.8);
+
 }
 
 .card img{
+
 width:100%;
-height:220px;
+
+height:250px;
+
 object-fit:cover;
+
 }
 
-.card-title{
+.info{
+
 padding:10px;
-font-size:14px;
+
 text-align:center;
+
 }
 
-.tag{
-display:inline-block;
-background:#ff512f;
-padding:3px 8px;
-border-radius:10px;
-font-size:11px;
-margin-top:6px;
+.title{
+
+font-size:14px;
+
+font-weight:500;
+
 }
 
-.watch-btn{
+.watch{
+
 margin-top:8px;
-padding:6px 10px;
+
+background:#ff2e63;
+
 border:none;
+
+padding:6px 12px;
+
 border-radius:8px;
-background:#dd2476;
-color:#fff;
-font-size:12px;
+
+color:white;
+
 cursor:pointer;
+
+font-size:12px;
+
 }
 
 footer{
+
 text-align:center;
-padding:20px;
-color:#aaa;
-font-size:13px;
+
+padding:30px;
+
+color:#777;
+
 }
+
 </style>
 </head>
 
 <body>
 
-<header>🔥 Ultimate Anime Hub</header>
+<header>
 
-<div class="search-bar">
-<input type="text" id="search" placeholder="Search anime..." onkeyup="searchTitles()">
+<div class="logo">🔥 Anime Hub</div>
+
+<input type="text" placeholder="Search anime..." class="search" id="search">
+
+</header>
+
+<div class="hero">
+
+Watch Anime Free Instantly
+
 </div>
 
 <div class="section">
-<h2>✨ Popular Anime Collection</h2>
-<div class="grid" id="anime"></div>
+
+<h2>🔥 Trending Anime</h2>
+
+<div class="grid" id="trending"></div>
+
+</div>
+
+<div class="section">
+
+<h2>⭐ Top Rated Anime</h2>
+
+<div class="grid" id="top"></div>
+
 </div>
 
 <footer>
-powered by AKASH   LIVE    ( abhishek ye dekh jo anime dalna h bata me dal dunga next )
+
+Anime Hub • Watch via watchanimeworld.net
+
 </footer>
 
 <script>
 
-const animeList = [
-"Naruto","Naruto Shippuden","Boruto","One Piece","Dragon Ball Z","Dragon Ball Super","Attack on Titan","Death Note","Demon Slayer","Jujutsu Kaisen",
-"Tokyo Ghoul","My Hero Academia","Black Clover","Bleach","Chainsaw Man","Spy x Family","Fullmetal Alchemist Brotherhood","Hunter x Hunter","One Punch Man","Sword Art Online",
-"Tokyo Revengers","Blue Lock","Haikyuu","Vinland Saga","Steins Gate","Code Geass","Death Parade","Monster","Mob Psycho 100","Fairy Tail",
-"Gintama","Re Zero","No Game No Life","Dr Stone","Fire Force","Assassination Classroom","Cowboy Bebop","Erased","Akame ga Kill","Bungo Stray Dogs",
-"Classroom of the Elite","Horimiya","Your Lie in April","Kuroko no Basket","Psycho Pass","Parasyte","Made in Abyss","Odd Taxi","Hells Paradise","Solo Leveling"
-];
+/* Redirect link */
 
-function createCard(title){
+function redirect(name){
+
+const url=`https://watchanimeworld.net/?s=${encodeURIComponent(name)}`;
+
+window.open(url,"_blank");
+
+}
+
+/* Create card */
+
+function createCard(container,anime){
 
 const card=document.createElement("div");
-card.className="card title-item";
 
-/* Anime related image */
-const img=`https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(title)}`;
-
-/* Redirect link */
-const watchUrl=`https://watchanimeworld.net/?s=${encodeURIComponent(title)}`;
+card.className="card";
 
 card.innerHTML=`
 
-<img src="${img}">
+<img src="${anime.images.jpg.large_image_url}">
 
-<div class="card-title">
+<div class="info">
 
-${title}<br>
+<div class="title">${anime.title}</div>
 
-<span class="tag">Anime</span><br>
-
-<button class="watch-btn">Watch</button>
+<button class="watch">Watch</button>
 
 </div>
 
 `;
 
-card.onclick=()=>{
+card.onclick=()=>redirect(anime.title);
 
-window.open(watchUrl,"_blank");
-
-}
-
-return card;
+container.appendChild(card);
 
 }
 
-function loadAnime(){
+/* Trending */
 
-const box=document.getElementById("anime");
+fetch("https://api.jikan.moe/v4/seasons/now")
 
-animeList.forEach(a=>{
+.then(res=>res.json())
 
-box.appendChild(createCard(a));
+.then(data=>{
+
+const container=document.getElementById("trending");
+
+data.data.slice(0,24).forEach(a=>createCard(container,a));
 
 });
 
-}
+/* Top Rated */
 
-function searchTitles(){
+fetch("https://api.jikan.moe/v4/top/anime")
 
-const q=document.getElementById("search").value.toLowerCase();
+.then(res=>res.json())
 
-document.querySelectorAll(".title-item").forEach(card=>{
+.then(data=>{
 
-card.style.display=card.innerText.toLowerCase().includes(q)?"block":"none";
+const container=document.getElementById("top");
+
+data.data.slice(0,24).forEach(a=>createCard(container,a));
 
 });
 
-}
+/* Search */
 
-loadAnime();
+document.getElementById("search").addEventListener("keyup",function(){
+
+let val=this.value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.style.display=card.innerText.toLowerCase().includes(val)?"block":"none";
+
+});
+
+});
 
 </script>
 
 </body>
 </html>
-
+```
