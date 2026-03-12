@@ -1,113 +1,55 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-<title>StreamFlix</title>
+<title>StreamFlix Anime</title>
 
 <style>
 
-/* General */
 body{
 margin:0;
 font-family:Arial;
-background:#111;
+background:#0f0f0f;
 color:white;
 }
-
-/* Navbar */
 
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
 background:black;
-position:sticky;
-top:0;
-}
-
-.logo{
 color:red;
-font-size:28px;
+font-size:32px;
+padding:15px;
+font-weight:bold;
 }
 
-nav a{
-margin:10px;
-color:white;
-text-decoration:none;
+h2{
+padding-left:20px;
 }
 
-nav a:hover{
-color:red;
-}
-
-.signin{
-background:red;
-border:none;
-padding:8px 16px;
-color:white;
-cursor:pointer;
-border-radius:4px;
-}
-
-/* Banner */
-
-.banner{
-height:70vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:url("https://wallpaperaccess.com/full/329583.jpg");
-background-size:cover;
-}
-
-.banner button{
-background:red;
-border:none;
-padding:12px 25px;
-font-size:16px;
-color:white;
-cursor:pointer;
-}
-
-/* Movies */
-
-.movies{
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:18px;
 padding:20px;
 }
 
-.movie-row{
-display:flex;
-gap:15px;
-overflow-x:auto;
-}
-
-.movie-card img{
-width:200px;
-border-radius:6px;
+.card{
+background:#1a1a1a;
+padding:12px;
+border-radius:8px;
+cursor:pointer;
 transition:0.3s;
-}
-
-.movie-card img:hover{
-transform:scale(1.1);
-}
-
-/* About */
-
-.about{
-padding:40px;
-background:#000;
 text-align:center;
 }
 
-/* Footer */
+.card:hover{
+transform:scale(1.07);
+background:#262626;
+}
 
 footer{
 text-align:center;
 padding:20px;
 background:black;
+margin-top:40px;
 }
 
 </style>
@@ -116,97 +58,63 @@ background:black;
 
 <body>
 
+<header>STREAMFLIX</header>
 
-<header>
+<h2>Top 100 Anime</h2>
 
-<h1 class="logo">StreamFlix</h1>
+<div class="container" id="anime"></div>
 
-<nav>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<button class="signin">Sign In</button>
-</nav>
-
-</header>
-
-
-<section class="banner">
-
-<h1>Unlimited Movies, Shows and More</h1>
-<p>Watch anywhere. Cancel anytime.</p>
-
-<button>Start Watching</button>
-
-</section>
-
-
-
-<section class="movies">
-
-<h2>Trending Now</h2>
-
-<div class="movie-row">
-
-<div class="movie-card">
-<img src="https://picsum.photos/200/300?1">
-</div>
-
-<div class="movie-card">
-<img src="https://picsum.photos/200/300?2">
-</div>
-
-<div class="movie-card">
-<img src="https://picsum.photos/200/300?3">
-</div>
-
-<div class="movie-card">
-<img src="https://picsum.photos/200/300?4">
-</div>
-
-<div class="movie-card">
-<img src="https://picsum.photos/200/300?5">
-</div>
-
-</div>
-
-</section>
-
-
-
-<section id="about" class="about">
-
-<h2>About StreamFlix</h2>
-
-<p>
-StreamFlix is a Netflix-inspired streaming UI made using HTML, CSS and JavaScript.
-This project demonstrates a modern movie browsing interface similar to Netflix.
-</p>
-
-<p>
-Users can explore trending movies, watch content, and enjoy a clean streaming platform UI.
-</p>
-
-</section>
-
-
-
-<footer>
-<p>© 2026 StreamFlix</p>
-</footer>
-
+<footer>StreamFlix Anime Library</footer>
 
 <script>
 
-/* Sign In Button */
+const animeList=[
 
-document.querySelector(".signin").addEventListener("click", function(){
+"Naruto","Naruto Shippuden","One Piece","Attack on Titan","Demon Slayer",
+"Jujutsu Kaisen","Death Note","Dragon Ball","Dragon Ball Z","Dragon Ball Super",
+"Fullmetal Alchemist Brotherhood","Tokyo Ghoul","Hunter x Hunter",
+"Black Clover","Bleach","Chainsaw Man","My Hero Academia","Spy x Family",
+"Vinland Saga","Solo Leveling","Blue Lock","Haikyuu","Steins Gate",
+"Code Geass","Mob Psycho 100","One Punch Man","Re Zero","Fairy Tail",
+"Sword Art Online","Dr Stone","Akame ga Kill","Gintama","Boruto",
+"Tokyo Revengers","Fire Force","No Game No Life","Overlord","Parasyte",
+"Assassination Classroom","Great Teacher Onizuka","JoJo Bizarre Adventure",
+"Cowboy Bebop","Neon Genesis Evangelion","Psycho Pass","Bungo Stray Dogs",
+"Made in Abyss","Kuroko no Basket","Food Wars","Seven Deadly Sins",
+"Black Lagoon","Hellsing Ultimate","Erased","Angel Beats","Clannad",
+"Clannad After Story","Toradora","Your Lie in April","Horimiya",
+"Kaguya Sama Love is War","Darling in the Franxx","Future Diary",
+"Another","Monster","The Promised Neverland","Ranking of Kings",
+"86 Eighty Six","Akira","Trigun","Samurai Champloo","Dororo",
+"Inuyasha","Noragami","Golden Kamuy","Dorohedoro","Devilman Crybaby",
+"Beastars","Great Pretender","Vivy Fluorite Eye Song","Cyberpunk Edgerunners",
+"Blue Exorcist","Mushoku Tensei","The Rising of the Shield Hero",
+"That Time I Got Reincarnated as a Slime","Classroom of the Elite",
+"The Eminence in Shadow","Zom 100","Hell's Paradise",
+"Call of the Night","Tomodachi Game","Undead Unluck",
+"Oshi no Ko","Frieren Beyond Journey End","Pluto",
+"Heavenly Delusion","Wind Breaker","Mashle Magic and Muscles",
+"Shangri La Frontier"
 
-alert("Sign In feature coming soon!");
+]
 
-});
+const container=document.getElementById("anime")
+
+animeList.forEach(a=>{
+
+let card=document.createElement("div")
+card.className="card"
+card.innerHTML="<h3>"+a+"</h3>"
+
+card.onclick=()=>{
+window.location.href="https://watchanimeworld.net/?s="+encodeURIComponent(a)
+}
+
+container.appendChild(card)
+
+})
 
 </script>
-
 
 </body>
 </html>
