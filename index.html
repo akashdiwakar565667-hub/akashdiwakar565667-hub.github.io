@@ -92,11 +92,11 @@ margin-top:40px;
 
 <div class="searchBox">
 
-<!-- ✅ Anime Search -->
+<!-- Anime -->
 <input id="animeInput" placeholder="Search Anime...">
 <button onclick="searchAnime()">Anime</button>
 
-<!-- ✅ Movie Search -->
+<!-- Movies -->
 <input id="movieInput" placeholder="Search Movies...">
 <button onclick="searchMovies()">Movies</button>
 
@@ -112,28 +112,35 @@ margin-top:40px;
 
 // ✅ Anime Search
 function searchAnime(){
-let q=document.getElementById("animeInput").value
-if(q!=""){
+let q=document.getElementById("animeInput").value.trim()
+if(q!==""){
 window.location.href="https://watchanimeworld.net/?s="+encodeURIComponent(q)
 }
 }
 
-// ✅ Movie Search (FIXED URL)
+// ✅ Movie Search (SMART FIX)
 function searchMovies(){
-let q=document.getElementById("movieInput").value
-if(q!=""){
-window.location.href="https://net22.cc/?s="+encodeURIComponent(q)
+let q=document.getElementById("movieInput").value.trim()
+
+if(q!==""){
+// try working URL
+window.location.href="https://net22.cc/home?keyword="+encodeURIComponent(q)
+
+// fallback (agar site block kare)
+setTimeout(()=>{
+window.open("https://net22.cc/home","_blank")
+},1500)
 }
 }
 
-// ✅ ENTER KEY SUPPORT
-document.getElementById("animeInput").addEventListener("keypress",function(e){
+// ✅ ENTER KEY FIX (keyup use kiya)
+document.getElementById("animeInput").addEventListener("keyup",function(e){
 if(e.key==="Enter"){
 searchAnime()
 }
 })
 
-document.getElementById("movieInput").addEventListener("keypress",function(e){
+document.getElementById("movieInput").addEventListener("keyup",function(e){
 if(e.key==="Enter"){
 searchMovies()
 }
@@ -165,7 +172,7 @@ card.innerHTML=`
 <h3>${a.name}</h3>
 `
 
-// 👉 Card click = Anime search
+// 👉 Anime click
 card.onclick=()=>{
 window.location.href="https://watchanimeworld.net/?s="+encodeURIComponent(a.name)
 }
