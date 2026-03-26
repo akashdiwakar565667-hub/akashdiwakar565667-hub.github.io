@@ -1,4 +1,4 @@
-# akashdiwakar.github.io
+# akashdiwakar565667-hub.github.io
 
 ## 🛠 Built With
 
@@ -6,6 +6,6 @@
 * CSS
 * JavaScript
 
-## 👨‍💻 Author
+## 👨‍💻 Dev by 
 
 Akash Diwakar
