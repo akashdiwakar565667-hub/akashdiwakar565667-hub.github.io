@@ -242,3 +242,23 @@ mix-blend-mode:screen;
 z-index:9999;
 
 }
+.movie-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.movie-card::before{
+    content:"";
+    position:absolute;
+    top:-120%;
+    left:-40%;
+    width:80%;
+    height:250%;
+    background:rgba(255,255,255,.15);
+    transform:rotate(25deg);
+    transition:.8s;
+}
+
+.movie-card:hover::before{
+    left:140%;
+}
