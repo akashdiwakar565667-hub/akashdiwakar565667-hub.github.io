@@ -262,3 +262,37 @@ z-index:9999;
 .movie-card:hover::before{
     left:140%;
 }
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+    margin-top:80px;
+    padding:50px 20px;
+    text-align:center;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.footer h2{
+    margin-bottom:10px;
+}
+
+.footer p{
+    color:#ccc;
+}
+
+.footer-links{
+    margin:20px 0;
+}
+
+.footer-links a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+}
+
+.footer-links a:hover{
+    color:#00e5ff;
+}
