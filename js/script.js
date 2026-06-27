@@ -13,10 +13,11 @@ document.addEventListener("mousemove", (e) => {
 // =====================
 
 const movies = [
-    {
-        title: "Interstellar",
-        rating: "8.7",
-        image: "https://placehold.co/300x450?text=Interstellar"
+    {{
+    title: "Interstellar",
+    rating: "8.7",
+    image: "assets/posters/"
+}
     },
     {
         title: "Inception",
