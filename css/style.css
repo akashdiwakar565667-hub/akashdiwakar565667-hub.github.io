@@ -181,3 +181,64 @@ transform:translateY(0px) rotate(360deg);
 }
 
 }
+/* ============================
+   Animated Aurora Background
+============================ */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:-25%;
+    z-index:-3;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,229,255,.30), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(140,82,255,.25), transparent 35%),
+        radial-gradient(circle at 40% 80%, rgba(0,255,170,.25), transparent 35%);
+
+    filter:blur(90px);
+
+    animation:auroraMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes auroraMove{
+
+0%{
+transform:translate(-8%,-5%) rotate(0deg);
+}
+
+100%{
+transform:translate(8%,5%) rotate(360deg);
+}
+
+}
+
+/* ============================
+   Mouse Glow
+============================ */
+
+.mouse-glow{
+
+position:fixed;
+
+width:320px;
+
+height:320px;
+
+border-radius:50%;
+
+pointer-events:none;
+
+background:radial-gradient(circle,
+rgba(0,229,255,.35),
+transparent 70%);
+
+transform:translate(-50%,-50%);
+
+filter:blur(40px);
+
+mix-blend-mode:screen;
+
+z-index:9999;
+
+}
