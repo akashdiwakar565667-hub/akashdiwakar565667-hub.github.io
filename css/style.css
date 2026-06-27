@@ -398,3 +398,37 @@ transition:.3s;
 background:white;
 
 }
+/* ===== Movie Grid Fix ===== */
+
+.movie-grid{
+    display:grid !important;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr)) !important;
+    gap:25px !important;
+    width:100%;
+}
+
+.movie-card{
+    display:block !important;
+    width:100% !important;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.movie-card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    display:block;
+}
+
+.movie-card h3,
+.movie-card p{
+    padding-left:15px;
+}
+
+.movie-card button{
+    margin:15px;
+}
