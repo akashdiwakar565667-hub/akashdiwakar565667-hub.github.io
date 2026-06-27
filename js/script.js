@@ -16,7 +16,7 @@ const movies = [
     {{
     title: "Interstellar",
     rating: "8.7",
-    image: "assets/posters/"
+    image: "assets/posters/samurai-woman-bridge-rain.jpg"
 }
     },
     {
