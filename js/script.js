@@ -92,32 +92,32 @@ const powers = [
 const gallery = [
     {
         title: "Saitama - The Unstoppable",
-        image: "https://cdn.pixabay.com/photo/2023/08/24/19/58/saitama-8211499_1280.png-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
+        image: "https://cdn.pixabay.com/photo/2023/08/24/19/58/saitama-8211499_1280.png",
         description: "One Punch Man destroying all obstacles with ease"
     },
     {
         title: "Goku's Spirit Bomb",
-        image: "https://www.looper.com/img/gallery/dragon-ball-what-does-gokus-spirit-bomb-do-exactly/l-intro-1694830651.jpg-1561070791-2526d30994b5?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1578026351781-c8def0190e2a?w=500&h=400&fit=crop",
         description: "The legendary Saiyan unleashing cosmic energy"
     },
     {
         title: "Naruto's Final Form",
-        image: "https://static.wikia.nocookie.net/naruto-ultimate-ninja-storm/images/a/a6/Naruto_Baryon.jpg/revision/latest?cb=20230707101107-1613141846471-74a8b62c97b5?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1613323593104-e71ebb2b78cc?w=500&h=400&fit=crop",
         description: "Nine-Tailed Fox power in full manifestation"
     },
     {
         title: "Ichigo's Bankai",
-        image: "https://live.staticflickr.com/199/508924404_f245fbd70f_w.jpg-1589519160732-57fc498494f8?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop",
         description: "Soul Reaper's ultimate transformation unleashed"
     },
     {
         title: "Luffy's Determination",
-        image: "https://butwhytho.net/wp-content/uploads/2023/06/One-Piece-Luffy-live-action-But-Why-Tho-1.jpg-1584949091033-57dc83cf44fe?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=400&fit=crop",
         description: "The Pirate King's unwavering spirit and resolve"
     },
     {
         title: "Kirito's Dual Blades",
-        image: "https://static.wikia.nocookie.net/swordartonline/images/8/87/Kirito_Dual_Blades.png/revision/latest?cb=20120928005056-1551388335-20c6ca6dc2d4?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1607146451992-3ac1b6e42b26?w=500&h=400&fit=crop",
         description: "Black Swordsman slicing through virtual reality"
     },
     {
@@ -127,12 +127,12 @@ const gallery = [
     },
     {
         title: "Power Unleashed",
-        image: "https://nerdarena.in/cdn/shop/products/NAThumbnail_UIGoku.jpg?v=1648994959&width=2048-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1604512209161-a4b8a32ce0db?w=500&h=400&fit=crop",
         description: "Incredible energy and spectacle of combat"
     },
     {
         title: "Divine Transformation",
-        image: "https://static.wikia.nocookie.net/supersaiyan09/images/4/4a/Divine_Super_Saiyan_-_Mastered.png/revision/latest?cb=20241026045540-1561070791-2526d30994b5?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=500&h=400&fit=crop",
         description: "Transcendence beyond mortal limits"
     }
 ];
@@ -290,7 +290,7 @@ function renderPowers() {
 function renderGallery() {
     galleryGrid.innerHTML = gallery.map((item, index) => `
         <div class="gallery-item" onclick="handleGalleryClick(${index})">
-            <img src="${item.image}" alt="${item.title}" class="gallery-image">
+            <img src="${item.image}" alt="${item.title}" class="gallery-image" loading="lazy">
             <div class="gallery-overlay">
                 <div class="gallery-title">${item.title}</div>
             </div>
@@ -321,6 +321,8 @@ function showGalleryModal(item) {
         z-index: 2000;
         animation: fadeIn 0.3s ease-out;
         backdrop-filter: blur(5px);
+        padding: 1rem;
+        overflow-y: auto;
     `;
 
     const modalContent = document.createElement('div');
@@ -331,6 +333,7 @@ function showGalleryModal(item) {
         padding: 2rem;
         border-radius: 20px;
         max-width: 600px;
+        width: 100%;
         max-height: 80vh;
         overflow: auto;
         animation: slideInUp 0.5s ease-out;
@@ -353,11 +356,12 @@ function showGalleryModal(item) {
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            z-index: 10;
         ">×</button>
         <img src="${item.image}" alt="${item.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1rem;">
         <h2 style="color: #ffd60a; margin-bottom: 1rem;">${item.title}</h2>
         <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
-            ${item.description || 'This is an incredible moment from the anime universe. The power and spectacle of this moment represents the pinnacle of combat and determination shown throughout the series.'}
+            ${item.description || 'This is an incredible moment from the anime universe. The power and spectacle of this moment represents the pinnacle of combat and determination shown throughout the anime saga.'}
         </p>
     `;
 
