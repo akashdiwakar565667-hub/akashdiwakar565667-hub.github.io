@@ -8,166 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Search</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:flex-start;
-}
-
-/* Search Container */
-
-.search-container{
-position:fixed;
-top:25px;
-left:50%;
-transform:translateX(-50%);
-z-index:1000;
-}
-
-/* Search Box */
-
-.search-box{
-display:flex;
-align-items:center;
-justify-content:center;
-width:65px;
-height:65px;
-border-radius:50px;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(15px);
--webkit-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.2);
-transition:.45s ease;
-overflow:hidden;
-cursor:pointer;
-box-shadow:0 8px 30px rgba(0,0,0,.3);
-}
-
-.search-box.active{
-width:350px;
-cursor:auto;
-}
-
-/* Icon */
-
-.search-box i{
-color:white;
-font-size:24px;
-min-width:65px;
-text-align:center;
-}
-
-/* Input */
-
-.search-box input{
-width:0;
-border:none;
-outline:none;
-background:transparent;
-color:white;
-font-size:17px;
-transition:.4s;
-}
-
-.search-box.active input{
-width:250px;
-padding-right:20px;
-}
-
-.search-box input::placeholder{
-color:#ddd;
-}
-
-</style>
-
-</head>
-<body>
-
-<div class="search-container">
-
-<div class="search-box" id="searchBox">
-
-<i class="fas fa-search" id="searchIcon"></i>
-
-<input
-type="text"
-placeholder="Search anything..."
-id="searchInput">
-
-</div>
-
-</div>
-
-<script>
-
-const searchBox=document.getElementById("searchBox");
-const searchInput=document.getElementById("searchInput");
-
-searchBox.addEventListener("click",()=>{
-
-searchBox.classList.add("active");
-
-setTimeout(()=>{
-searchInput.focus();
-},250);
-
-});
-
-document.addEventListener("click",(e)=>{
-
-if(!searchBox.contains(e.target)){
-
-searchBox.classList.remove("active");
-
-searchInput.value="";
-
-}
-
-});
-
-searchInput.addEventListener("keydown",(e)=>{
-
-if(e.key==="Enter"){
-
-let query=searchInput.value.trim();
-
-if(query!==""){
-
-alert("Searching for: "+query);
-
-// Example:
-// window.location.href="search.html?q="+encodeURIComponent(query);
-
-}
-
-}
-
-});
-
-</script>
-
-</body>
-</html>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -181,6 +21,13 @@ alert("Searching for: "+query);
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <!-- Search Bar in Navbar -->
+            <div class="search-container-nav">
+                <div class="search-box-nav" id="searchBoxNav">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search characters..." id="searchInputNav" class="search-input-nav">
+                </div>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
