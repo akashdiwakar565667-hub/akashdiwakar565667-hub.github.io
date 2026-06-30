@@ -23,6 +23,30 @@ const characters = [
         power: 90,
         speed: 85,
         intelligence: 75
+    },
+    {
+        name: "Goku",
+        description: "The legendary Saiyan warrior with endless determination",
+        icon: "🐉",
+        power: 100,
+        speed: 95,
+        intelligence: 60
+    },
+    {
+        name: "Luffy",
+        description: "The Free-Spirited Pirate King with rubber powers",
+        icon: "🏴‍☠️",
+        power: 85,
+        speed: 88,
+        intelligence: 50
+    },
+    {
+        name: "Kirito",
+        description: "The Black Swordsman with dual-wielding abilities",
+        icon: "⚫",
+        power: 80,
+        speed: 90,
+        intelligence: 85
     }
 ];
 
@@ -50,21 +74,66 @@ const powers = [
         description: "Massive fireball jutsu that engulfs the battlefield",
         icon: "🔥",
         level: 75
+    },
+    {
+        name: "Kamehameha",
+        description: "The ultimate energy blast that can destroy planets",
+        icon: "💥",
+        level: 95
+    },
+    {
+        name: "Gear Fourth",
+        description: "Bouncing rubber transformation with explosive power",
+        icon: "🎪",
+        level: 85
     }
 ];
 
 const gallery = [
     {
-        title: "Legendary Battle",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff006e;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238338ec;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23grad1)'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23ffd60a' opacity='0.3'/%3E%3Cpolygon points='200,80 280,180 200,200 120,180' fill='%23fff' opacity='0.2'/%3E%3C/svg%3E"
+        title: "Saitama - The Unstoppable",
+        image: "https://images.unsplash.com/photo-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
+        description: "One Punch Man destroying all obstacles with ease"
+    },
+    {
+        title: "Goku's Spirit Bomb",
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=400&fit=crop",
+        description: "The legendary Saiyan unleashing cosmic energy"
+    },
+    {
+        title: "Naruto's Final Form",
+        image: "https://images.unsplash.com/photo-1613141846471-74a8b62c97b5?w=500&h=400&fit=crop",
+        description: "Nine-Tailed Fox power in full manifestation"
+    },
+    {
+        title: "Ichigo's Bankai",
+        image: "https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=500&h=400&fit=crop",
+        description: "Soul Reaper's ultimate transformation unleashed"
+    },
+    {
+        title: "Luffy's Determination",
+        image: "https://images.unsplash.com/photo-1584949091033-57dc83cf44fe?w=500&h=400&fit=crop",
+        description: "The Pirate King's unwavering spirit and resolve"
+    },
+    {
+        title: "Kirito's Dual Blades",
+        image: "https://images.unsplash.com/photo-1551388335-20c6ca6dc2d4?w=500&h=400&fit=crop",
+        description: "Black Swordsman slicing through virtual reality"
+    },
+    {
+        title: "Legendary Battle Arena",
+        image: "https://images.unsplash.com/photo-1569163139394-de4798aa62b3?w=500&h=400&fit=crop",
+        description: "Epic clashes of the most powerful anime warriors"
     },
     {
         title: "Power Unleashed",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%233a86ff;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ff006e;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23grad2)'/%3E%3Crect x='50' y='50' width='300' height='200' fill='none' stroke='%23ffd60a' stroke-width='3'/%3E%3Ccircle cx='200' cy='150' r='50' fill='%23ffd60a' opacity='0.4'/%3E%3C/svg%3E"
+        image: "https://images.unsplash.com/photo-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
+        description: "Incredible energy and spectacle of combat"
     },
     {
-        title: "Sacred Transformation",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238338ec;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%233a86ff;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23grad3)'/%3E%3Cpolygon points='200,50 350,200 250,250 150,250 50,200' fill='%23ffd60a' opacity='0.3'/%3E%3C/svg%3E"
+        title: "Divine Transformation",
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=400&fit=crop",
+        description: "Transcendence beyond mortal limits"
     }
 ];
 
@@ -288,8 +357,7 @@ function showGalleryModal(item) {
         <img src="${item.image}" alt="${item.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1rem;">
         <h2 style="color: #ffd60a; margin-bottom: 1rem;">${item.title}</h2>
         <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
-            This is an incredible moment from the anime universe. The power and spectacle of this moment represents 
-            the pinnacle of combat and determination shown throughout the series.
+            ${item.description || 'This is an incredible moment from the anime universe. The power and spectacle of this moment represents the pinnacle of combat and determination shown throughout the series.'}
         </p>
     `;
 
