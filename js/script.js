@@ -92,32 +92,32 @@ const powers = [
 const gallery = [
     {
         title: "Saitama - The Unstoppable",
-        image: "https://images.unsplash.com/photo-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
+        image: "https://cdn.pixabay.com/photo/2023/08/24/19/58/saitama-8211499_1280.png-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
         description: "One Punch Man destroying all obstacles with ease"
     },
     {
         title: "Goku's Spirit Bomb",
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=400&fit=crop",
+        image: "https://www.looper.com/img/gallery/dragon-ball-what-does-gokus-spirit-bomb-do-exactly/l-intro-1694830651.jpg-1561070791-2526d30994b5?w=500&h=400&fit=crop",
         description: "The legendary Saiyan unleashing cosmic energy"
     },
     {
         title: "Naruto's Final Form",
-        image: "https://images.unsplash.com/photo-1613141846471-74a8b62c97b5?w=500&h=400&fit=crop",
+        image: "https://static.wikia.nocookie.net/naruto-ultimate-ninja-storm/images/a/a6/Naruto_Baryon.jpg/revision/latest?cb=20230707101107-1613141846471-74a8b62c97b5?w=500&h=400&fit=crop",
         description: "Nine-Tailed Fox power in full manifestation"
     },
     {
         title: "Ichigo's Bankai",
-        image: "https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=500&h=400&fit=crop",
+        image: "https://live.staticflickr.com/199/508924404_f245fbd70f_w.jpg-1589519160732-57fc498494f8?w=500&h=400&fit=crop",
         description: "Soul Reaper's ultimate transformation unleashed"
     },
     {
         title: "Luffy's Determination",
-        image: "https://images.unsplash.com/photo-1584949091033-57dc83cf44fe?w=500&h=400&fit=crop",
+        image: "https://butwhytho.net/wp-content/uploads/2023/06/One-Piece-Luffy-live-action-But-Why-Tho-1.jpg-1584949091033-57dc83cf44fe?w=500&h=400&fit=crop",
         description: "The Pirate King's unwavering spirit and resolve"
     },
     {
         title: "Kirito's Dual Blades",
-        image: "https://images.unsplash.com/photo-1551388335-20c6ca6dc2d4?w=500&h=400&fit=crop",
+        image: "https://static.wikia.nocookie.net/swordartonline/images/8/87/Kirito_Dual_Blades.png/revision/latest?cb=20120928005056-1551388335-20c6ca6dc2d4?w=500&h=400&fit=crop",
         description: "Black Swordsman slicing through virtual reality"
     },
     {
@@ -127,12 +127,12 @@ const gallery = [
     },
     {
         title: "Power Unleashed",
-        image: "https://images.unsplash.com/photo-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
+        image: "https://nerdarena.in/cdn/shop/products/NAThumbnail_UIGoku.jpg?v=1648994959&width=2048-1578482326236-e3b46ba20fc4?w=500&h=400&fit=crop",
         description: "Incredible energy and spectacle of combat"
     },
     {
         title: "Divine Transformation",
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=400&fit=crop",
+        image: "https://static.wikia.nocookie.net/supersaiyan09/images/4/4a/Divine_Super_Saiyan_-_Mastered.png/revision/latest?cb=20241026045540-1561070791-2526d30994b5?w=500&h=400&fit=crop",
         description: "Transcendence beyond mortal limits"
     }
 ];
